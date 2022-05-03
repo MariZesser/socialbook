@@ -23,15 +23,32 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 //   },
 // });
 Template.nav.events({
-  'click.js-add'(){
+  'click .js-add'(){
     console.log("adding");
     $("#addModal").modal("show");
   }
 });
 
-Template.main.events({});
+Template.main.events({
+  'click .js-saveProfile'(){
+    let ProfilePicture = $("Profpic").val();
+    let FirstName =$("fName").val();
+    console.log("I love myself");
+    socialdb.insert({
+      "picPath":ProfilePicture,
+      "fname": FirstName,
+      "createdOn":new Date().getTime()
+    });
+  }
+});
 
-profile
+Template.profile.helpers({
+  profiles(){
+    return socialdb.find();
+  }
+});
+
+// profile
 // image
 // name
 // age
