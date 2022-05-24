@@ -2,6 +2,12 @@ import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 import '../lib/collection.js';
 import './main.html';
+import './ViewProfile/VP.html';
+import './AddProfile/AD.html';
+import './Profile/Profile.html';
+import './Navbar/Nav.html';
+import './ConfirmDelete/CD.html';
+import './ConfirmDelete/CD.js';
 import bootstrap from 'bootstrap';
 import { createPopper } from '@popperjs/core';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -39,7 +45,7 @@ Template.main.events({
 
     if (validateAddForm(fName, lName,Sex,pic)) {
       socialdb.insert({
-        "picPath": Profpic,
+        "picPath": pic,
         "fname": fName,
         "createdOn": new Date().getTime()
       });
@@ -54,18 +60,20 @@ Template.main.events({
   },
   'click .js-view'() {
     let that = this;
-    $("#chkMe").html(that._id);
+    $("#docId").val(that._id);
     $("#chkMe").html("<h2>" + $("#chkMe").html() + "</h2>profile picture<br>first<br>last<br>age<br>sex<br>description");
-    console.table(that);
+    //console.table(that);
     $("#viewModal").modal("show");
   },
-  "click .js_delete"() {
+  "click .js-delete"() {
     let dId = $("#docId").val();
+    console.log (dId);
     $("#viewModal").modal("hide");
+    $("#conDelModal").modal("show");
     $("#" + dId).fadeOut("slow", () => {
-      socialdb.remove({
-        "_id": dId
-      });
+       socialdb.remove({
+         "_id": dId
+       });
     });
   }
 });
