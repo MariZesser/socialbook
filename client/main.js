@@ -5,6 +5,7 @@ import './main.html';
 import './ViewProfile/VP.html';
 import './AddProfile/AD.html';
 import './Profile/Profile.html';
+import './Profile/Profile';
 import './Navbar/Nav.html';
 import './ConfirmDelete/CD.html';
 import './ConfirmDelete/CD.js';
