@@ -103,11 +103,7 @@ let validateAddForm = (fn, ln,Sx,pc) => {
   return valid;
 }
 
-Template.profile.helpers({
-  profiles(){
-    return socialdb.find();
-  }
-});
+
 
 // profile
 // image
