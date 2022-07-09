@@ -12,77 +12,60 @@ import './ConfirmDelete/CD.js';
 import bootstrap from 'bootstrap';
 import { createPopper } from '@popperjs/core';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// Template.hello.onCreated(function helloOnCreated() {
-//   // counter starts at 0
-//   this.counter = new ReactiveVar(0);
-// });
 
-// Template.hello.helpers({
-//   counter() {
-//     return Template.instance().counter.get();
-//   },
-// });
-
-// Template.hello.events({
-//   'click button'(event, instance) {
-//     // increment the counter when button is clicked
-//     instance.counter.set(instance.counter.get() + 1);
-//   },
-// });
 Template.nav.events({
   'click .js-add'(){
-    console.log("adding");
     $("#addModal").modal("show");
   }
 });
 
 Template.main.events({
   'click .js-saveProfile'() {
-    // grad data from fields
     let pic = $("#Profpic").val();
     let fName = $("#fName").val();
     let lName = $("#lName").val();
+    let Num = $("#Num").val();
     let Sex = $("#male").prop("checked") ? "male" : "female";
 
-    if (validateAddForm(fName, lName,Sex,pic)) {
+    if (validateAddForm(pic,fName,lName,Num,Sex)) {
       socialdb.insert({
         "picPath": pic,
         "fname": fName,
+        "lname": lName,
+        "num":Num,
+        "sex":Sex,
         "createdOn": new Date().getTime()
       });
       $("#addModal").modal("hide");
     }
   },
-  'input #profPic'() {
+  'input #Profpic'() {
     let path = $("#Profpic").val();
-    path = !path ? "unisex-avatar.png" : path;
-    $("#displaypic").prop("src", path);
+    path = !path ? "Avatar2.jpg" : path;
+    $("#displayPic").prop("src", path);
     console.log(path);
   },
   'click .js-view'() {
     let that = this;
     $("#docId").val(that._id);
     $("#chkMe").html("<h2>" + $("#chkMe").html() + "</h2>profile picture<br>first<br>last<br>age<br>sex<br>description");
-    //console.table(that);
     $("#viewModal").modal("show");
   },
   "click .js-delete"() {
     let dId = $("#docId").val();
-    console.log (dId);
+    $("#conId").val(dId);
     $("#viewModal").modal("hide");
     $("#conDelModal").modal("show");
-    $("#" + dId).fadeOut("slow", () => {
-       socialdb.remove({
-         "_id": dId
-       });
-    });
   }
 });
 
-let validateAddForm = (fn, ln,Sx,pc) => {
+let validateAddForm = (fn,ln,nm,Sx,pc) => {
   let valid = true;
+  $("#pic").removeClass("errorBox");
   $("#fName").removeClass("errorBox");
   $("#lName").removeClass("errorBox");
+  $("#Num").removeClass("errorBox");
+  $("#Sex").removeClass("errorBox");
 
   if (!fn) {
     $("#fName").addClass("errorBox");
@@ -90,6 +73,10 @@ let validateAddForm = (fn, ln,Sx,pc) => {
   }
   if (!ln) {
     $("#lName").addClass("errorBox");
+    valid = false;
+  }
+  if (!nm) {
+    $("#Num").addClass("errorBox");
     valid = false;
   }
   if (!Sx) {

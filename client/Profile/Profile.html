@@ -7,13 +7,17 @@
             <strong class="d-inline-block mb-2 text-primary">World</strong>
             {{> starsRating rating=5 size='sm' class="js-rate" mutable=true data-id=_id}}
             <h3 class="mb-0">{{fname}}</h3>
+            <h4 class="mb-1">{{lname}}</h4>
+            <h5 class="mb-2">{{sex}}</h5>
+            <h6 class="mb-3">{{age}}</h6>
             <div class="mb-1 text-muted">Nov 12</div>
             <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional
               content.</p>
             <a href="#" class=" js-view">Continue reading</a>
           </div>
-          <div class="col-auto d-none d-lg-block">
-            <img src="{{picPath}}" alt="">
+          <!-- {{#if currentUser}} -->
+          <div class="col-auto d-none d-lg-block profHeight">
+            <img class="w-100" src="{{picPath}}" alt="">
             <!-- <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img"
               aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
               <title>Placeholder</title>
@@ -22,6 +26,7 @@
             </svg> -->
     
           </div>
+          <!-- {{/if}} -->
         </div>
       </div>
     {{/each}}
