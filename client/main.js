@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 import '../lib/collection.js';
@@ -5,13 +6,14 @@ import './main.html';
 import './ViewProfile/VP.html';
 import './AddProfile/AD.html';
 import './Profile/Profile.html';
-import './Profile/Profile';
+import './Profile/Profile.js';
 import './Navbar/Nav.html';
 import './ConfirmDelete/CD.html';
 import './ConfirmDelete/CD.js';
 import bootstrap from 'bootstrap';
 import { createPopper } from '@popperjs/core';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { faMeteor } from '@fortawesome/free-solid-svg-icons';
 
 Template.nav.events({
   'click .js-add'(){
@@ -34,7 +36,7 @@ Template.main.events({
         "lname": lName,
         "num":Num,
         "sex":Sex,
-        "createdOn": new Date().getTime()
+        "createdOn": new Date().getTime(),
       });
       $("#addModal").modal("hide");
     }
@@ -43,7 +45,6 @@ Template.main.events({
     let path = $("#Profpic").val();
     path = !path ? "Avatar2.jpg" : path;
     $("#displayPic").prop("src", path);
-    console.log(path);
   },
   'click .js-view'() {
     let that = this;

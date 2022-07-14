@@ -26,3 +26,11 @@ body {
 .errorBox {
   border: 3px solid red !important;
 }
+
+.male {
+  background-color: rgb(0, 162, 255);
+}
+
+.female {
+  background-color: pink;
+}
