@@ -1,0 +1,63 @@
+<template name="editProf">
+    <div class="modal" tabindex="-1" id="editModal" data-bs-backdrop="static" data-bs-keyboard="false">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <input type="hidden" id="editId">
+            <h5 class="modal-title">Edit Modal</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="input-group mb-3">
+              <img class="w-50" id="editdisplayPic" src="Avatar2.jpg" alt="">
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="editbasic-addon1">Profile Picture</span>
+              <input id="editProfpic" type="text" class="form-control" placeholder="Paste profile picture here" aria-label="image" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="editbasic-addon1">Second Profile Picture</span>
+                <input id="editSecondProfpic" type="text" class="form-control" placeholder="Paste Second profile picture here" aria-label="image" aria-describedby="basic-addon1">
+              </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="editbasic-addon1">First Name</span>
+              <input id="editfName" type="text" class="form-control" placeholder="Insert First Name" aria-label="text" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="editbasic-addon1">Last Name</span>
+              <input id="editlName" type="text" class="form-control" placeholder="Insert Last Name" aria-label="text" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="editbasic-addon1">Age</span>
+              <input id="editNum" type="number" min="1" class="form-control" placeholder="Insert Age" aria-label="text" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="editbasic-addon1">Description</span>
+                <input id="editDesc" type="text" min="1" class="form-control" placeholder="Insert Description" aria-label="text" aria-describedby="basic-addon1">
+              </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text" id="editbasic-addon5">Sex</span>
+              <div class="addFormBorder">
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="editfemale">
+                  <label class="form-check-label" for="flexRadioDefault1">
+                    Female
+                  </label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="flexRadioDefault" id="editmale">
+                  <label class="form-check-label" for="flexRadioDefault2">
+                    Male
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary js-editProfile">Update Profile</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
