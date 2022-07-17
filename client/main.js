@@ -32,9 +32,11 @@ Template.main.events({
     let lName = $("#lName").val();
     let Num = $("#Num").val();
     let Desc = $("#Desc").val();
+    let FavC = $("#FavC").val();
+    let Hob = $("#Hob").val();
     let Sex = $("#male").prop("checked") ? "male" : "female";
 
-    if (validateAddForm(pic,pic2,fName,lName,Num,Desc,Sex)) {
+    if (validateAddForm(pic,pic2,fName,lName,Num,Desc,FavC,Hob,Sex)) {
       socialdb.insert({
         "picPath": pic,
         "picPath2": pic2,
@@ -42,6 +44,8 @@ Template.main.events({
         "lname": lName,
         "num":Num,
         "desc":Desc,
+        "favc":FavC,
+        "hob":Hob,
         "sex":Sex,
         "createdOn": new Date().getTime(),
       });
@@ -72,7 +76,7 @@ Template.main.events({
   }
 });
 
-let validateAddForm = (fn,ln,nm,dc,Sx,pc,pc2) => {
+let validateAddForm = (fn,ln,nm,dc,fc,hb,Sx,pc,pc2) => {
   let valid = true;
   $("#pic").removeClass("errorBox");
   $("#pic2").removeClass("errorBox");
@@ -80,6 +84,8 @@ let validateAddForm = (fn,ln,nm,dc,Sx,pc,pc2) => {
   $("#lName").removeClass("errorBox");
   $("#Num").removeClass("errorBox");
   $("#Desc").removeClass("errorBox");
+  $("#FavC").removeClass("errorBox");
+  $("#Hob").removeClass("errorBox");
   $("#Sex").removeClass("errorBox");
 
   if (!fn) {
@@ -98,6 +104,14 @@ let validateAddForm = (fn,ln,nm,dc,Sx,pc,pc2) => {
     $("#Desc").addClass("errorBox");
     valid = false;
   }
+  if (!fc) {
+    $("#FavC").addClass("errorBox");
+    valid = false;
+  }
+  if (!hb) {
+    $("#Hob").addClass("errorBox");
+    valid = false;
+  }
   if (!Sx) {
     $("#Sex").addClass("errorBox");
     valid = false;
@@ -112,11 +126,3 @@ let validateAddForm = (fn,ln,nm,dc,Sx,pc,pc2) => {
   }
   return valid;
 }
-
-
-
-// profile
-// image
-// name
-// age
-// sex

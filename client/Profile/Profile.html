@@ -5,30 +5,20 @@
         <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative {{#if whatSex}}male{{else}}female{{/if}}">
           <div class="col p-4 d-flex flex-column position-static">
             <strong class="d-inline-block mb-2 text-primary">World</strong>
-            {{> starsRating rating=5 size='lg' class="js-rate" mutable=true data-id=_id}}
-            <h3 class="mb-0">{{fname}}</h3>
-            <h4 class="mb-1">{{lname}}</h4>
-            <h5 class="mb-2">{{sex}}</h5>
+            {{> starsRating rating=rating size='lg' class="js-rate" mutable=true data-id=_id}}
+            <h3 class="mb-3">{{fname}}</h3>
+            <h4 class="mb-3">{{lname}}</h4>
+            <h5 class="mb-3">{{sex}}</h5>
             <h6 class="mb-3">{{num}}</h6>
-            <h6 class="mb-3">{{desc}}</h6>
-            <div class="mb-1 text-muted">Nov 12</div>
-            <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional
-              content.</p>
+            <h7 class="mb-3">{{desc}}</h7>
+            <h8 class="mb-3">{{favc}}</h8>
+            <h9 class="mb-3">{{hob}}</h9>
             <a href="#" class=" js-view">Continue reading</a>
           </div>
-          <!-- {{#if currentUser}} -->
           <div class="col-auto d-none d-lg-block profHeight">
             <img class="w-100" src="{{picPath}}" alt="">
             <!-- <img class="w-100" src="{{picPath2}}" alt=""> -->
-            <!-- <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img"
-              aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-              <title>Placeholder</title>
-              <rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef"
-                dy=".3em">Thumbnail</text>
-            </svg> -->
-    
           </div>
-          <!-- {{/if}} -->
         </div>
       </div>
       {{/each}}

@@ -1,7 +1,6 @@
 Template.viewProf.events({
     'click .js-edit'(){
         let dId = $("#docId").val();
-        // console.log("editing", dId);
         $("#viewModal").modal("hide");
         $("#editId").val(dId);
         let editData = socialdb.findOne({"_id":dId});
@@ -10,10 +9,15 @@ Template.viewProf.events({
         $("#editfName").val(editData.fname);
         $("#editlName").val(editData.lname);
         $("#editNum").val(editData.num);
-        $("#edit").val(editData.picPath);
         $("#editDesc").val(editData.desc);
-        $("#editProfpic").val(editData.picPath);
+        if(editData.sex == "male"){
+            $("#editmale").attr("checked", true);
+            $("#editfemale").attr("checked", false);
+        }
+        else{
+            $("#editmale").attr("checked", false);
+            $("#editfemale").attr("checked", true);
+        }
         $("#editModal").modal("show");
-        console.log(editData);
     }
 });
